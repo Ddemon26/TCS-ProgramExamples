@@ -1,0 +1,14 @@
+{
+  "name": "com.tcs.audiomanager",
+  "displayName": "TCS-AudioManager",
+  "description": "A simple audio manager for Unity",
+  "version": "1.0.1",
+  "keywords": ["audio", "manager", "unity", "simple"],
+  "category": "Tent City Studio",
+  "dependencies": {},
+  "author": {
+    "name": "Damon Fedorick",
+    "url": "https://github.com/Ddemon26/TCS-AudioManager"
+  },
+  "documentationUrl": "https://github.com/Ddemon26/TCS-AudioManager/blob/main/README.md"
+}

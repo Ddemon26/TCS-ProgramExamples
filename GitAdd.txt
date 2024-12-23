@@ -1,0 +1,7 @@
+git submodule add https://github.com/Ddemon26/RecordExamples
+
+git rm --cached RecordExamples
+
+rm -rf RecordExamples
+
+rm -rf .git/modules/RecordExamples
