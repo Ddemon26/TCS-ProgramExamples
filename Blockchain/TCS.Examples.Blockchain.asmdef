@@ -1,0 +1,14 @@
+{
+    "name": "TCS.Examples.Blockchain",
+    "rootNamespace": "TCS.Examples.Blockchain",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
