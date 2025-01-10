@@ -88,7 +88,7 @@ namespace TCS.StudioUtils {
         }
 
         void SceneViewOndrawGizmosChanged(bool enabled) {
-            // Update the value based on the drawGizmos state
+            // UpdateProceduralRecoil the value based on the drawGizmos state
             value = enabled;
             Debug.Log($"Gizmos visibility changed: {enabled}");
         }
