@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 ////TODO: deal with composites that have parts bound in different control schemes
 
-namespace UnityEngine.InputSystem.Samples.RebindUI
-{
+namespace UnityEngine.InputSystem.Samples.RebindUI {
     /// <summary>
     /// A reusable component with a self-contained UI for rebinding a single action.
     /// </summary>
@@ -382,7 +381,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         private InputBinding.DisplayStringOptions m_DisplayStringOptions;
 
         [Tooltip("Text label that will receive the name of the action. Optional. Set to None to have the "
-            + "rebind UI not show a label for the action.")]
+                 + "rebind UI not show a label for the action.")]
         [SerializeField]
         private Text m_ActionLabel;
 
@@ -399,13 +398,13 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         private Text m_RebindText;
 
         [Tooltip("Event that is triggered when the way the binding is display should be updated. This allows displaying "
-            + "bindings in custom ways, e.g. using images instead of text.")]
+                 + "bindings in custom ways, e.g. using images instead of text.")]
         [SerializeField]
         private UpdateBindingUIEvent m_UpdateBindingUIEvent;
 
         [Tooltip("Event that is triggered when an interactive rebind is being initiated. This can be used, for example, "
-            + "to implement custom UI behavior while a rebind is in progress. It can also be used to further "
-            + "customize the rebind.")]
+                 + "to implement custom UI behavior while a rebind is in progress. It can also be used to further "
+                 + "customize the rebind.")]
         [SerializeField]
         private InteractiveRebindEvent m_RebindStartEvent;
 

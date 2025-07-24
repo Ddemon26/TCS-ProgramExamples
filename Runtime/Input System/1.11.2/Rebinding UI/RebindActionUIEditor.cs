@@ -4,8 +4,7 @@ using UnityEditor;
 
 ////TODO: support multi-object editing
 
-namespace UnityEngine.InputSystem.Samples.RebindUI
-{
+namespace UnityEngine.InputSystem.Samples.RebindUI {
     /// <summary>
     /// A custom inspector for <see cref="RebindActionUI"/> which provides a more convenient way for
     /// picking the binding which to rebind.
@@ -134,8 +133,8 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     if (asset != null)
                     {
                         var controlSchemes = string.Join(", ",
-                            binding.groups.Split(InputBinding.Separator)
-                                .Select(x => asset.controlSchemes.FirstOrDefault(c => c.bindingGroup == x).name));
+                                                         binding.groups.Split(InputBinding.Separator)
+                                                             .Select(x => asset.controlSchemes.FirstOrDefault(c => c.bindingGroup == x).name));
 
                         displayString = $"{displayString} ({controlSchemes})";
                     }
@@ -173,5 +172,5 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             public static GUIStyle boldLabel = new GUIStyle("MiniBoldLabel");
         }
     }
-}
 #endif
+}

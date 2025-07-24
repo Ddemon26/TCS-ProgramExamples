@@ -93,63 +93,63 @@ namespace TCS.StudioUtils {
             Debug.Log($"Gizmos visibility changed: {enabled}");
         }
     }
+}
 
-    /*internal static class SceneViewToolbarStyles {
-        private const string k_StyleSheet = "StyleSheets/SceneViewToolbarElements/SceneViewToolbarElements.uss";
-        private const string k_StyleLight = "StyleSheets/SceneViewToolbarElements/SceneViewToolbarElementsLight.uss";
-        private const string k_StyleDark = "StyleSheets/SceneViewToolbarElements/SceneViewToolbarElementsDark.uss";
-        private static StyleSheet s_Style;
-        private static StyleSheet s_Skin;
+/*internal static class SceneViewToolbarStyles {
+    private const string k_StyleSheet = "StyleSheets/SceneViewToolbarElements/SceneViewToolbarElements.uss";
+    private const string k_StyleLight = "StyleSheets/SceneViewToolbarElements/SceneViewToolbarElementsLight.uss";
+    private const string k_StyleDark = "StyleSheets/SceneViewToolbarElements/SceneViewToolbarElementsDark.uss";
+    private static StyleSheet s_Style;
+    private static StyleSheet s_Skin;
 
-        internal static void AddStyleSheets(VisualElement ve) {
-            if ((Object)SceneViewToolbarStyles.s_Skin == (Object)null)
-                SceneViewToolbarStyles.s_Skin = !EditorGUIUtility.isProSkin ? EditorGUIUtility.Load("StyleSheets/SceneViewToolbarElements/SceneViewToolbarElementsLight.uss") as StyleSheet : EditorGUIUtility.Load("StyleSheets/SceneViewToolbarElements/SceneViewToolbarElementsDark.uss") as StyleSheet;
-            if ((Object)SceneViewToolbarStyles.s_Style == (Object)null)
-                SceneViewToolbarStyles.s_Style = EditorGUIUtility.Load("StyleSheets/SceneViewToolbarElements/SceneViewToolbarElements.uss") as StyleSheet;
-            ve.styleSheets.Add(SceneViewToolbarStyles.s_Style);
-            ve.styleSheets.Add(SceneViewToolbarStyles.s_Skin);
-        }
+    internal static void AddStyleSheets(VisualElement ve) {
+        if ((Object)SceneViewToolbarStyles.s_Skin == (Object)null)
+            SceneViewToolbarStyles.s_Skin = !EditorGUIUtility.isProSkin ? EditorGUIUtility.Load("StyleSheets/SceneViewToolbarElements/SceneViewToolbarElementsLight.uss") as StyleSheet : EditorGUIUtility.Load("StyleSheets/SceneViewToolbarElements/SceneViewToolbarElementsDark.uss") as StyleSheet;
+        if ((Object)SceneViewToolbarStyles.s_Style == (Object)null)
+            SceneViewToolbarStyles.s_Style = EditorGUIUtility.Load("StyleSheets/SceneViewToolbarElements/SceneViewToolbarElements.uss") as StyleSheet;
+        ve.styleSheets.Add(SceneViewToolbarStyles.s_Style);
+        ve.styleSheets.Add(SceneViewToolbarStyles.s_Skin);
+    }
+}
+
+[EditorBrowsable(EditorBrowsableState.Never)]
+internal abstract class PopupWindowBase : EditorWindow {
+    private static double s_LastClosedTime;
+    private static Rect s_LastActivatorRect;
+
+    private static bool ShouldShowWindow(Rect activatorRect) {
+        if (EditorApplication.timeSinceStartup - PopupWindowBase.s_LastClosedTime < 0.2 && !(activatorRect != PopupWindowBase.s_LastActivatorRect))
+            return false;
+        PopupWindowBase.s_LastActivatorRect = activatorRect;
+        return true;
     }
 
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    internal abstract class PopupWindowBase : EditorWindow {
-        private static double s_LastClosedTime;
-        private static Rect s_LastActivatorRect;
+    public static T Show<T>(VisualElement trigger, Vector2 size) where T : EditorWindow {
+        return PopupWindowBase.Show<T>(GUIUtility.GUIToScreenRect(trigger.worldBound), size);
+    }
 
-        private static bool ShouldShowWindow(Rect activatorRect) {
-            if (EditorApplication.timeSinceStartup - PopupWindowBase.s_LastClosedTime < 0.2 && !(activatorRect != PopupWindowBase.s_LastActivatorRect))
-                return false;
-            PopupWindowBase.s_LastActivatorRect = activatorRect;
-            return true;
+    public static T Show<T>(Rect activatorRect, Vector2 size) where T : EditorWindow {
+        T[] objectsOfTypeAll = Resources.FindObjectsOfTypeAll<T>();
+        if (((IEnumerable<T>)objectsOfTypeAll).Any<T>()) {
+            foreach (T obj in objectsOfTypeAll)
+                obj.Close();
+            return default(T);
         }
 
-        public static T Show<T>(VisualElement trigger, Vector2 size) where T : EditorWindow {
-            return PopupWindowBase.Show<T>(GUIUtility.GUIToScreenRect(trigger.worldBound), size);
-        }
+        if (!PopupWindowBase.ShouldShowWindow(activatorRect))
+            return default(T);
+        T instance = ScriptableObject.CreateInstance<T>();
+        instance.hideFlags = HideFlags.DontSave;
+        instance.ShowAsDropDown(activatorRect, size);
+        return instance;
+    }
 
-        public static T Show<T>(Rect activatorRect, Vector2 size) where T : EditorWindow {
-            T[] objectsOfTypeAll = Resources.FindObjectsOfTypeAll<T>();
-            if (((IEnumerable<T>)objectsOfTypeAll).Any<T>()) {
-                foreach (T obj in objectsOfTypeAll)
-                    obj.Close();
-                return default(T);
-            }
+    private void OnEnableINTERNAL() {
+        AssemblyReloadEvents.beforeAssemblyReload += new AssemblyReloadEvents.AssemblyReloadCallback(((EditorWindow)this).Close);
+    }
 
-            if (!PopupWindowBase.ShouldShowWindow(activatorRect))
-                return default(T);
-            T instance = ScriptableObject.CreateInstance<T>();
-            instance.hideFlags = HideFlags.DontSave;
-            instance.ShowAsDropDown(activatorRect, size);
-            return instance;
-        }
-
-        private void OnEnableINTERNAL() {
-            AssemblyReloadEvents.beforeAssemblyReload += new AssemblyReloadEvents.AssemblyReloadCallback(((EditorWindow)this).Close);
-        }
-
-        private void OnDisableINTERNAL() {
-            PopupWindowBase.s_LastClosedTime = EditorApplication.timeSinceStartup;
-            AssemblyReloadEvents.beforeAssemblyReload -= new AssemblyReloadEvents.AssemblyReloadCallback(((EditorWindow)this).Close);
-        }
-    }*/
-}
+    private void OnDisableINTERNAL() {
+        PopupWindowBase.s_LastClosedTime = EditorApplication.timeSinceStartup;
+        AssemblyReloadEvents.beforeAssemblyReload -= new AssemblyReloadEvents.AssemblyReloadCallback(((EditorWindow)this).Close);
+    }
+}*/
