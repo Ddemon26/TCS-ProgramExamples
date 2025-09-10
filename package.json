@@ -1,14 +1,14 @@
 {
-  "name": "com.tcs.audiomanager",
-  "displayName": "TCS-AudioManager",
-  "description": "A simple audio manager for Unity",
+  "name": "com.tcs.programexamples",
+  "displayName": "TCS-ProgramExamples",
+  "description": "A collection of Unity programming examples including blockchain, input systems, matrix operations, C# records, and editor tools",
   "version": "1.0.1",
-  "keywords": ["audio", "manager", "unity", "simple"],
+  "keywords": ["examples", "education", "blockchain", "records", "matrix", "unity", "programming"],
   "category": "Tent City Studio",
   "dependencies": {},
   "author": {
     "name": "Damon Fedorick",
-    "url": "https://github.com/Ddemon26/TCS-AudioManager"
+    "url": "https://github.com/Ddemon26/TCS-ProgramExamples"
   },
-  "documentationUrl": "https://github.com/Ddemon26/TCS-AudioManager/blob/main/README.md"
+  "documentationUrl": "https://github.com/Ddemon26/TCS-ProgramExamples/blob/main/README.md"
 }

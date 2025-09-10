@@ -1,102 +1,104 @@
-# TCS AudioManager
+# TCS ProgramExamples
 
-![GitHub Forks](https://img.shields.io/github/forks/Ddemon26/TCS-AudioManager)
-![GitHub Contributors](https://img.shields.io/github/contributors/Ddemon26/TCS-AudioManager)
-![GitHub Stars](https://img.shields.io/github/stars/Ddemon26/TCS-AudioManager)
-![GitHub Repo Size](https://img.shields.io/github/repo-size/Ddemon26/TCS-AudioManager)
+![GitHub Forks](https://img.shields.io/github/forks/Ddemon26/TCS-ProgramExamples)
+![GitHub Contributors](https://img.shields.io/github/contributors/Ddemon26/TCS-ProgramExamples)
+![GitHub Stars](https://img.shields.io/github/stars/Ddemon26/TCS-ProgramExamples)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/Ddemon26/TCS-ProgramExamples)
 
 [![Join our Discord](https://img.shields.io/badge/Discord-Join%20Us-7289DA?logo=discord&logoColor=white)](https://discord.gg/knwtcq3N2a)
 ![Discord](https://img.shields.io/discord/1047781241010794506)
 
 ## Overview
 
-**TCS AudioManager** is a comprehensive and scalable audio management system for Unity projects. It features advanced audio event handling, pooling of sound sources, centralized control via the AudioManager, and support for audio logging. This system is designed to enhance performance while maintaining flexibility for projects of all sizes.
+**TCS ProgramExamples** is a comprehensive collection of Unity programming examples and educational resources designed to help developers learn and implement various programming concepts in Unity. This repository covers advanced topics including blockchain implementation, input system management, matrix operations, C# records usage, and Unity editor development.
 
 ## Features
 
-- **Audio Event System:** Define and play complex audio events with custom properties.
-- **Audio Pooling:** Efficient management of sound instances for better performance.
-- **Centralized Audio Control:** Singleton-based AudioManager to handle all audio operations.
-- **Global Audio Settings:** Use `AudioManagerSettings` to adjust volumes and global settings.
-- **Debug Logging:** Integrated logger for tracking audio-related actions and errors.
-- **Benchmarking:** Built-in tests and tools for performance evaluation.
+- **Blockchain Implementation:** Complete blockchain system with blocks, transactions, wallets, and UTXO management
+- **Input System Examples:** Unity Input System examples with rebinding UI for version 1.11.2
+- **Matrix Operations:** BSP Dungeon Generator and Inventory Matrix system implementations
+- **C# Records Examples:** Comprehensive examples of C# 9.0 Records usage in Unity (high, medium, and low-level)
+- **Editor Tools:** Unity Editor toolbar overlay examples and custom editor development
+- **Educational Focus:** Well-documented examples designed for learning and teaching programming concepts
 
 ## Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Ddemon26/TCS-AudioManager.git
+   git clone https://github.com/Ddemon26/TCS-ProgramExamples.git
    ```
 
 2. Add the cloned folder to your Unity project’s `Assets` folder.
 
-3. Ensure the `TCS.AudioManager.asmdef` is included in your Unity assemblies.
+3. Each example category has its own assembly definition file (.asmdef) for modular usage:
+   - `TCS.Examples.Blockchain.asmdef` - Blockchain examples
+   - `TCS.Examples.Matrix.asmdef` - Matrix operation examples  
+   - `TCS.Examples.Records.asmdef` - C# Records examples
 
-## Usage
+## Usage Examples
 
-### Initializing AudioManager
+This repository contains several categories of programming examples for Unity development:
 
-Ensure the `AudioManager` is initialized at the start of your project lifecycle:
+### Blockchain Examples (`Runtime/Blockchain/`)
 
-```csharp
-AudioManager.Instance.Initialize();
-```
-
-### Creating and Playing Audio Events
-
-Create a custom `AudioEvent` using the builder pattern, where you can configure properties such as volume, pitch, and looping:
-
-```csharp
-AudioEvent audioEvent = new AudioEvent.Builder()
-    .WithClip(yourAudioClip)  // Set your AudioClip
-    .WithVolume(1.0f)         // Volume control
-    .WithPitch(1.0f)          // Pitch control
-    .WithLoop(false)          // Enable or disable looping
-    .WithFadeInDuration(0.5f) // Optional fade-in effect
-    .Build();
-
-// Play the event using AudioManager
-AudioManager.Instance.PlaySound(audioEvent);
-```
-
-### Using the Audio Pooler
-
-For efficient audio management, leverage the `AudioPooler` to reuse sound instances:
+Complete blockchain implementation demonstrating:
+- **Block creation and mining** with proof-of-work consensus
+- **Transaction management** with input/output validation  
+- **UTXO (Unspent Transaction Output)** management system
+- **Wallet functionality** for managing keys and balances
+- **Node management** for peer-to-peer networking
 
 ```csharp
-AudioPooler pooler = AudioManager.Instance.AudioPooler;
-SoundInstance soundInstance = pooler.GetPooledAudio("SoundEffect");
-soundInstance.Play();
+// Example: Creating a simple blockchain transaction
+var blockchain = new Blockchain();
+var wallet = new Wallet();
+var transaction = wallet.CreateTransaction("recipientAddress", 50.0f, blockchain);
+blockchain.AddTransaction(transaction);
 ```
 
-This ensures that audio sources are reused, reducing memory usage and improving performance.
+### C# Records Examples (`Runtime/RecordExamples/`)
 
-### Adjusting Global Audio Settings
+Comprehensive examples of C# 9.0 Records usage across three complexity levels:
+- **High-Level Examples**: Event bus systems, friend request management
+- **Mid-Level Examples**: Inventory systems, trade management, achievements  
+- **Low-Level Examples**: AI settings, game events, difficulty configuration
 
-Customize global audio settings, such as master volume, via the `AudioManagerSettings` class:
+Detailed documentation available in: `Runtime/RecordExamples/README.md`
 
-```csharp
-AudioManager.Instance.Settings.MasterVolume = 0.75f;
-AudioManager.Instance.Settings.SFXVolume = 0.85f;
-AudioManager.Instance.Settings.MusicVolume = 0.65f;
-```
+### Matrix Examples (`Runtime/MatrixExamples/`)
 
-These settings will apply globally, providing control over various audio channels.
+Advanced matrix operations and systems:
+- **BSP Dungeon Generator**: Binary space partitioning for procedural dungeon generation
+- **Inventory Matrix System**: Grid-based inventory management with spatial logic
 
-### Enabling Logging
+### Input System Examples (`Runtime/Input System/`)
 
-Enable detailed logging to track audio events and debug issues within the system:
+Unity Input System integration examples:
+- **Rebinding UI**: Runtime key binding modification interface  
+- **Version 1.11.2 Compatibility**: Examples for current Unity Input System
 
-```csharp
-Logger.EnableLogging(true);
-Logger.Log("Audio event triggered successfully!");
-```
+### Editor Examples (`Editor/ToolbarOverlayExample/`)
 
-This outputs logs related to audio playback, warnings, and errors.
+Unity Editor customization examples:
+- **Custom Toolbar Overlays**: Scene view toolbar extensions
+- **Dropdown Controls**: Interactive editor UI elements
+- **Toggle Systems**: Editor state management
 
-## Testing
+## Learning Resources
 
-This project includes test scripts and benchmarking tools located in the `Tests` folder. These tests can be run in Unity’s test runner to validate the system's performance and functionality under different conditions.
+Each example category includes:
+- **Comprehensive Documentation**: Detailed README files explaining concepts and usage
+- **Well-Commented Code**: Clear explanations of implementation details
+- **Progressive Complexity**: Examples ranging from basic to advanced implementations
+- **Real-World Applications**: Practical use cases for game development scenarios
+
+## Getting Started
+
+1. **Browse Examples**: Explore the `Runtime/` and `Editor/` folders to find examples of interest
+2. **Read Documentation**: Check individual README files for detailed explanations
+3. **Import Selectively**: Use assembly definitions to import only needed examples
+4. **Experiment**: Modify and extend examples to fit your specific needs
+
 
 ## Contribution
 
